@@ -1,0 +1,218 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+:root {
+  --delay: 0;
+  --duration: 800ms;
+  --iterations: 1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(128, 128, 128, 0.173);
+  color: white;
+  background-color: #000;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header {
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  padding: 10px;
+}
+
+header a {
+  color: white;
+  font-size: 20px;
+}
+
+header a:hover {
+  color: orangered;
+  font-size: 25px;
+}
+
+header ul {
+  gap: 35px;
+}
+
+main {
+  margin: auto;
+  text-align: center;
+  box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  padding: 50px;
+}
+
+.box {
+  background-color: rgba(0, 0, 0, 0.936);
+  color: white;
+  text-align: center;
+  width: 380px;
+  height: 440px;
+  box-shadow: 0px 0px 20px 0px #fff;
+}
+
+.box:hover {
+  transform: scale(1.1);
+}
+
+.effect3d {
+  animation-name: effect3d;
+}
+
+main h1 {
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 5s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}
+
+main .box h1,
+main .box h1::after {
+  animation-delay: var(--animation-delay, 6s);
+  animation-iteration-count: var(--iterations, 1);
+  animation-duration: var(--duration, 800ms);
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+main .box h1 {
+  --animation-delay: var(--delay, 0);
+  --animation-duration: var(--duration, 800ms);
+  --animation-iterations: var(--iterations, 1);
+  position: relative;
+  font-size: 10vw;
+  animation-name: clip-text;
+  color: #fff;
+  white-space: nowrap;
+  cursor: default;
+
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f2f98b;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    pointer-events: none;
+    animation-name: text-revealer;
+  }
+}
+
+@keyframes clip-text {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes text-revealer {
+  0%,
+  50% {
+    transform-origin: 0 50%;
+  }
+
+  60%,
+  100% {
+    transform-origin: 100% 50%;
+  }
+
+  60% {
+    transform: scaleX(1);
+  }
+
+  100% {
+    transform: scaleX(0);
+  }
+}
+
+section {
+  margin: 50px auto;
+  text-align: center;
+  padding: 30px;
+}
+
+section .flex {
+  justify-content: space-around;
+}
+
+.card {
+  width: 350px;
+  height: 400px;
+  color: white;
+  text-align: center;
+  background-color: #000;
+  margin: 40px 0;
+  box-shadow: 0px 0px 20px 0px #fff;
+}
+
+.card:hover {
+  transform: scale(1.2);
+}
+
+.card button {
+  color: white;
+  background-color: green;
+  width: 250px;
+  height: 50px;
+  border: none;
+  border-radius: 30px;
+}
+
+.card button:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  box-shadow: 0px -4px 8px 0px rgba(34, 60, 80, 0.2);
+  padding: 10px;
+}
+
+footer a {
+  color: white;
+  font-size: 20px;
+}
+
+footer a:hover {
+  color: orangered;
+  font-size: 25px;
+}
+
+footer ul {
+  gap: 35px;
+}
